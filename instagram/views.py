@@ -26,4 +26,18 @@ def convert_dates(dates):
     return day
 
 def profile(request,profile):
-    return HttpResponse(html)
+     date = dt.date.today()
+     return render(request, 'profile.html', {"date": date,})
+
+def search_results(request,search_results):
+
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_category(search_term)
+
+        message = "{search_term}"
+        return render(request, 'search_results.html', {"message":message, "images": searched_images})
+
+    else:
+        message = "You haven't made any terms"
+        return render(request, 'search_results.html', {"message":message})
