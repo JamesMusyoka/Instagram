@@ -1,5 +1,30 @@
-{%extends 'all-news/base.html'%}
+{%extends 'base.html'%}
 
-{% block content %}
-{{block.super}}
-{% endblock %}
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{profile.image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{profile.name}}</h1>
+   </div>
+
+   <div class="row">
+     {% autoescape on %}
+     {{profile.post| safe}}
+    {% endautoescape %}
+
+   </div>
+
+   <div class="row">
+     <p>Posted {{profile.pub_date|timesince}} by {{profile.image.url}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}
+
+ 

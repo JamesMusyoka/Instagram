@@ -1,1 +1,37 @@
-<h1 style="color:green; text-align: center">Welcome to Instagram App</h1>
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+{{ block.super}}
+{% include "navbar.html" %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="row">
+{% for post in images %}
+<div class="col-md-4">
+<img src="{{post.image.url}}" alt="image" width="420" height="420">
+{{post.image_name}}
+    </div>
+    {{image.profile.username}}</a>
+{% endfor %}
+
+{% for post in images %}
+<h2>{{post.image_caption}}</h2>
+<h2>{{post.likes}}</h2>
+<h2>{{post.comments}}</h2>
+<h2>{{post.share}}</h2>
+
+{% endfor %}
+</div>
+
+<div class="container-fluid">
+
+    <form  action="{%url 'profile'%}" method="post">
+      {%csrf_token%}
+  
+      {% bootstrap_form CommentForm layout='inline' %}
+      <input type="submit" value="Subscribe">
+    </form>
+  
+  </div>
+
+{% endblock %}
+
