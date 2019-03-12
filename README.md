@@ -1,6 +1,6 @@
 # Instagram
 
- <img src="/gallery/static/images/img.png">
+ <img src="/instagram/static/images/img.png">
 
 # Author
 James Muito
